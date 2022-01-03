@@ -9,6 +9,8 @@ Created on Sun Jan  2 14:21:09 2022
 from gtts import gTTS
 from playsound import playsound
 import speech_recognition as sr
+from datetime import date
+import calendar
 
 # initialize
 r = sr.Recognizer()
@@ -28,18 +30,49 @@ while True:
             mytext = r.recognize_google(audio)
             language = 'en'
             if mytext == 'Python please stop':
-                outtext="Ok Krish , we'll meet again"
+                outtext="Ok Krish , hope to see you again"
                 myobj = gTTS(text=outtext, lang=language, slow=False)
                 myobj.save("temp.mp3")
+                print("Flexa : ",outtext)
                 playsound("temp.mp3")
                 break
+            elif mytext == 'who are you':
+                outtext="I am Flexa !"
+                myobj = gTTS(text=outtext, lang=language, slow=False)
+                myobj.save("temp.mp3")
+                print("Flexa : ",outtext)
+                playsound("temp.mp3")
+            elif mytext == 'how are you':
+                outtext="I am fine , what about you"
+                myobj = gTTS(text=outtext, lang=language, slow=False)
+                myobj.save("temp.mp3")
+                print("Flexa : ",outtext)
+                playsound("temp.mp3")
+            elif mytext == "what is today's date":
+                today = date.today()
+                d=today.strftime("%B %d, %Y")
+                t="Today is "
+                outtext=t+d
+                myobj = gTTS(text=outtext, lang=language, slow=False)
+                myobj.save("temp.mp3")
+                print("Flexa : ",outtext)
+                playsound("temp.mp3")
+            elif mytext == "what is today's day":
+                today = date.today()
+                d=calendar.day_name[today.weekday()]
+                t="Today is "
+                outtext=t+d
+                myobj = gTTS(text=outtext, lang=language, slow=False)
+                myobj.save("temp.mp3")
+                print("Flexa : ",outtext)
+                playsound("temp.mp3")
             else:
                 myobj = gTTS(text=mytext, lang=language, slow=False)
                 myobj.save("temp.mp3")
+                print("Flexa : ",mytext)
                 playsound("temp.mp3")                
         except:
             outtext="Couldn't get you , Please say again"
             myobj = gTTS(text=outtext, lang=language, slow=False)
             myobj.save("temp.mp3")
             playsound("temp.mp3")
-            
