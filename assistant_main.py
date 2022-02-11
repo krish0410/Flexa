@@ -6,7 +6,7 @@ Created on Mon Jan 10 12:29:09 2022
 @author: krish
 """
 
-from speech_txt_speech import *
+from assistant_function import *
 
 # conversation starts from Here
 speak("This is Flexa , How can I help you")
